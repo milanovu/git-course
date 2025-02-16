@@ -1,0 +1,29 @@
+1. Giải thích các câu lệnh: git init, git add <file_name>, git add ., git commit -m “message”. 
+ans:
+- git init => Khởi tạo Git cho vùng (folder) được chọn.
+- git add <file_name> => add các specific untracked files được chọn vào vùng stage/staging
+- git add. => add tất cả các untracked files vào vùng stage/staging
+- git commit -m "message" => lệnh để đẩy tất cả các files trong vùng stage/staging lên Repositories, message nên tùy thuộc
+vào mục tiêu và nội dụng của lần commit, feat - fix - chore,..
+
+2. Hãy tưởng tượng có 1 folder lesson-2 mới được tạo. Hãy liệt kê các file theo từng vùng 
+sau khi thao tác một loạt các lệnh sau (sẽ rất tuyệt nếu bạn không chạy lệnh trên máy thật, 
+mà bạn suy nghĩ trong đầu để ra được kết quả; bạn sẽ nhớ rất lâu đấy ^^): 
+a. Tạo 3 file: file1, file2, file3 
+b. Chạy lệnh: git init 
+c. Chạy lệnh: git commit -m”init project” 
+d. Chạy lệnh: git add file1 
+e. Chạy lệnh: git commit -m”add file1” 
+f. Chạy lệnh: git add file 
+
+ans:
+a. Tạo 3 file: file1, file2, file3 => Git chưa được khởi tạo.
+b. Chạy lệnh: git init => Git được khởi tạo, 3 files (file1,file2,file3) nằm trong vùng Working Dir
+c. Chạy lệnh: git commit -m”init project”  => Chỉ là commit rỗng, chưa file nào được add vào. 3 files vẫn nằm trong vùng working
+d. Chạy lệnh: git add file1 => File1 được add vào vùng đệm staging. File2 và file3 vẫn nằm trong vùng Working 
+e. Chạy lệnh: git commit -m”add file1”  => File1 được add vào vùng Repository. File2 và File3 vẫn nằm trong  vùng Working.
+f. Chạy lệnh: git add file => có thể sẽ ra lỗi do không có file nào tên "file". 
+File1 vẫn trong vùng Repository. File2 và File3 vẫn nằm trong  vùng Working.
+
+3. Push bài tập lên GitHub. 
+DONE
