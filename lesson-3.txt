@@ -1,0 +1,75 @@
+# Git Exercises Answers
+
+## 1. Giải thích các câu lệnh Git
+- **`git commit --amend`**: Chỉnh sửa commit cuối cùng (thêm file, sửa message, …).
+- **`git commit --amend -m "<message>"`**: Thay đổi message của commit cuối cùng mà không cần vào trình soạn thảo.
+- **`git restore --staged <file>`**: Đưa file ra khỏi vùng staging (chỉ quay lại working directory, không mất thay đổi).
+- **`git reset HEAD~1`**: Undo commit gần nhất, đưa thay đổi về staging hoặc working directory.
+
+---
+
+## 2. Trạng thái các file theo từng vùng sau các lệnh Git
+### **Bắt đầu với folder `lesson-3`**
+```
+File         | Vùng
+------------|----------------
+file1       | Working directory
+file2       | Working directory
+file3       | Working directory
+```
+
+### **Sau từng lệnh**
+```
+Lệnh                        | Kết quả
+---------------------------|--------------------------------
+`git init`                 | Repo Git được khởi tạo, không có file nào được theo dõi
+`git commit -m "init project"` | Không commit được vì chưa có file nào trong staging
+`git add file1`            | file1 vào staging
+`git commit -m "add file"` | Commit file1 -> Staging rỗng
+`git add .`                | file2 và file3 vào staging
+`git restore --staged file2` | file2 quay lại working directory, chỉ file3 còn trong staging
+`git commit -m "add all files"` | Commit file3, file2 vẫn ở working directory
+`git reset HEAD~1`         | Undo commit, file3 quay lại staging
+```
+
+### **Tình trạng cuối cùng**
+```
+File         | Vùng
+------------|----------------
+file1       | Đã commit
+file2       | Working directory
+file3       | Staging
+```
+
+---
+
+## 3. Trạng thái các file theo từng vùng sau các lệnh Git
+### **Bắt đầu với folder `lesson-3-git`**
+```
+File            | Vùng
+---------------|----------------
+file1.txt      | Working directory
+file2.txt      | Working directory
+oops/file3.txt | Working directory
+.gitignore     | Working directory
+```
+
+### **Sau từng lệnh**
+```
+Lệnh                        | Kết quả
+---------------------------|--------------------------------
+`git init`                 | Repo Git được khởi tạo, không có file nào được theo dõi
+`.gitignore` thêm `file1.txt` và `oops/` | file1.txt và oops/file3.txt bị Git bỏ qua
+`git add .`                | Chỉ file2.txt và .gitignore vào staging
+`git commit -m "init project"` | Commit file2.txt và .gitignore
+```
+
+### **Tình trạng cuối cùng**
+```
+File            | Vùng
+---------------|----------------
+file1.txt      | Bị `.gitignore` bỏ qua (không theo dõi)
+file2.txt      | Đã commit
+oops/file3.txt | Bị `.gitignore` bỏ qua (không theo dõi)
+.gitignore     | Đã commit
+```
